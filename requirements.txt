@@ -1,0 +1,6 @@
+numpy
+tensorflow
+tensorflow_text
+tensorflowjs
+tflite-model-maker
+flask
