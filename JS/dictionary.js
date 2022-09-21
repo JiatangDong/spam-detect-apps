@@ -1,7 +1,7 @@
-const PAD = 0;
-const START = 1;
-const UNKNOWN = 2;
-const LOOKUP = {
+export const PAD = 0;
+export const START = 1;
+export const UNKNOWN = 2;
+export const LOOKUP = {
 "i": 3,
 "to": 4,
 "you": 5,

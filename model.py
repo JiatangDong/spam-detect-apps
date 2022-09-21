@@ -13,12 +13,12 @@ tf.get_logger().setLevel('ERROR')
 
 spec = model_spec.get('average_word_vec')
 spec.num_words = 2000
-spec.seq_len = 20
+spec.seq_len = 200
 spec.wordvec_dim = 7
 
 data = DataLoader.from_csv(
-      filename='./spam.csv',
-      text_column='text', 
+      filename='./lmblog_comments.csv',
+      text_column='commenttext', 
       label_column='spam', 
       model_spec=spec,
       delimiter=',',
@@ -26,10 +26,9 @@ data = DataLoader.from_csv(
       is_training=True)
 
 train_data, test_data = data.split(0.9)
+model = text_classifier.create(train_data, model_spec=spec, epochs=100)
 
-model = text_classifier.create(train_data, model_spec=spec, epochs=5)
-
-model.export(export_dir="./JS/SPAM_DETECT_MODEL/", export_format=[
+model.export(export_dir="./JS/comment_model/", export_format=[
   ExportFormat.TFJS, 
   ExportFormat.LABEL, 
   ExportFormat.VOCAB
